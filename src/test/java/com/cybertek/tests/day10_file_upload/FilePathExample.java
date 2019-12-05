@@ -14,22 +14,24 @@ public class FilePathExample {
 
 
     @BeforeMethod
-    public void setUpMethod(){
+    public void setUpMethod() {
         driver = WebDriverFactory.getDriver("chrome");
     }
+
     @AfterMethod
     public void tearDownMethod() throws InterruptedException {
         Thread.sleep(2000);
         driver.quit();
     }
+
     /**
-     *  go to website http://practice.cybertekschool.com/upload
-     *  upload file.txt
-     *  click upload
-     *  verify file name is displayed in the next page
+     * go to website http://practice.cybertekschool.com/upload
+     * upload file.txt
+     * click upload
+     * verify file name is displayed in the next page
      */
     @Test
-    public void test1(){
+    public void test1() {
         driver.get("http://practice.cybertekschool.com/upload");
         //file path unique for each computer
         driver.findElement(By.name("file")).sendKeys("/Users/cybertekstudio/Desktop/file.txt");
@@ -38,26 +40,22 @@ public class FilePathExample {
         //getting text of webelement
         String actualFilename = driver.findElement(By.id("uploaded-files")).getText();
         //verify file name is displayed in the next page
-        Assert.assertEquals(actualFilename,"file.txt","Verify the file name");
+        Assert.assertEquals(actualFilename, "file.txt", "Verify the file name");
     }
+
     @Test
-    public void test2(){
+    public void test2() {
         driver.get("http://practice.cybertekschool.com/upload");
         String projectPath = System.getProperty("user.dir");
         String relativePath = "src/test/resources/testFile.txt";
-        String filePath = projectPath+"/"+relativePath;
+        String filePath = projectPath + "/" + relativePath;
         driver.findElement(By.name("file")).sendKeys(filePath);
         //clicking the upload button
         driver.findElement(By.id("file-submit")).click();
         //getting text of webelement
         String actualFilename = driver.findElement(By.id("uploaded-files")).getText();
         //verify file name is displayed in the next page
-        Assert.assertEquals(actualFilename,"testFile.txt","Verify the file name");
+        Assert.assertEquals(actualFilename, "testFile.txt", "Verify the file name");
     }
 
-
-
-
-
 }
-
