@@ -2,6 +2,7 @@ package com.cybertek.tests.day11_actions_jsexecuter;
 
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -54,5 +55,19 @@ public class HoverTest {
             System.out.println("text = " + text.getText());
             Assert.assertTrue(text.isDisplayed());
         }
+    }
+
+    @Test
+    public void StaleTest(){
+        driver.get("https://google.com");
+        WebElement input=driver.findElement(By.name("q"));
+        input.sendKeys("Selenium" + Keys.ENTER);
+        WebElement results=driver.findElement(By.id("resultStats"));
+        Assert.assertTrue(results.isDisplayed());
+
+        driver.navigate().back();
+        WebElement inputAgain=driver.findElement(By.name("q"));
+        inputAgain.sendKeys("Java" + Keys.ENTER);
+
     }
 }
