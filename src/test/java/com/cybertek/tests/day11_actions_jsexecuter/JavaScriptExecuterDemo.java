@@ -51,16 +51,19 @@ public class JavaScriptExecuterDemo {
     public void Scroll() throws InterruptedException {
         driver.get("http://practice.cybertekschool.com/infinite_scroll");
 
-        JavascriptExecutor jse=(JavascriptExecutor) driver;
-
-
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        for (int i = 0; i < 10; i++) {
             Thread.sleep(500);
+            //scrolling down
+            jse.executeScript("window.scrollBy(0,250)");
+        }
 
-            jse.executeAsyncScript("window.scrollBy(0,250)");
-
+        for (int i = 0; i < 5; i++) {
             Thread.sleep(500);
+            //scrolling up
+            jse.executeScript("window.scrollBy(0,-250)");
+        }
 
-            jse.executeAsyncScript("window.scrollBy(0,-250)");
 
     }
 }

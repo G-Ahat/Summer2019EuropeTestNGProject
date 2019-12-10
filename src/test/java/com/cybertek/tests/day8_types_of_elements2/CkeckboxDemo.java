@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class CkeckboxDemo {
 
     @Test
-    public void test1() {
+    public void test1() throws InterruptedException {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.get("https://practice.cybertekschool.com/checkboxes");
 
@@ -20,9 +20,13 @@ public class CkeckboxDemo {
         //verify that checkbox 1 is unselected and 2 is selected
         Assert.assertTrue(checkbox2.isSelected(), "verify that checkbox 1 is selected");
         Assert.assertFalse(checkbox1.isSelected(),"verify that checkbox 1 is selected");
+        Thread.sleep(1000);
 
-        //select the first checkbos
+        //select the first checkbox
         checkbox1.click();
+
+
+        Thread.sleep(1000);
         Assert.assertTrue(checkbox2.isSelected(), "verify that checkbox 1 is selected");
         Assert.assertTrue(checkbox1.isSelected(),"verify that checkbox 1 is selected");
 

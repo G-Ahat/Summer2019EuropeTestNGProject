@@ -1,4 +1,4 @@
-package com.cybertek.tests;
+package com.cybertek.tests.assignments;
 
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
